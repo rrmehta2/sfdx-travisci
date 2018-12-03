@@ -1,10 +1,9 @@
-# sfdx-travisci [![Build Status](https://travis-ci.org/forcedotcom/sfdx-travisci.svg?branch=master)](https://trailhead.salesforce.com/trails/sfdx_get_started/modules/sfdx_travis_ci)
+# sfdx-travisci [![Build Status](https://travis-ci.org/forcedotcom/sfdx-travisci.svg?branch=master)](https://travis-ci.org/forcedotcom/sfdx-travisci)
 
 For a fully guided walk through of setting up and configuring this sample, see the [Continuous Integration Using Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_travis_ci) Trailhead module.
 
 This repository shows one way you can successfully setup Salesforce DX with Travis CI. We make a few assumptions in this README:
 
-- You are currently a part of the Salesforce DX Beta. If you're not, you can [join the beta](https://staging.developer.salesforce.com/promotions/orgs/dx-signup).
 - You know how to get your Github repository setup with Travis CI. (Here's their [Getting Started guide](https://docs.travis-ci.com/user/getting-started/).)
 - You've installed the [Travis CLI](https://github.com/travis-ci/travis.rb#installation). 
 - You have properly setup JWT-Based Authorization Flow (i.e. headless). I recommend using [these steps for generating your Self-Signed SSL Certificate](https://devcenter.heroku.com/articles/ssl-certificate-self). 
@@ -32,13 +31,13 @@ If any any of these assumptions aren't true, the following steps won't work.
 
 7) Add your `server.key` that you generated previously to the folder called `assets`.
 
-8) From the root folder of your local project, encrypt your `server.key` value:
+8) Open the `.travis.yml` file and remove the first line that starts with `openssl ...` and save the file.
+
+9) From the root folder of your local project, encrypt your `server.key` value:
 
     travis encrypt-file assets/server.key assets/server.key.enc --add
 
-9) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
-
-11) Open the `.travis.yml` file and remove the first line that starts with `openssl ...` and save the file.
+10) IMPORTANT! Remove your `server.key`: `rm assets/server.key`, you should never store keys or certificates in a public place.
 
 And you should be ready to go! Now when you commit and push a change, your change will kick off a Travis CI build.
 
@@ -46,8 +45,10 @@ Enjoy!
 
 ## Contributing to the Repository ###
 
-If you find any issues or opportunities for improving this respository, fix them!  Feel free to contribute to this project by [forking](http://help.github.com/fork-a-repo/) this repository and make changes to the content.  Once you've made your changes, share them back with the community by sending a pull request. Please see [How to send pull requests](http://help.github.com/send-pull-requests/) for more information about contributing to Github projects.
+If you find any issues or opportunities for improving this repository, fix them!  Feel free to contribute to this project by [forking](http://help.github.com/fork-a-repo/) this repository and make changes to the content.  Once you've made your changes, share them back with the community by sending a pull request. Please see [How to send pull requests](http://help.github.com/send-pull-requests/) for more information about contributing to Github projects.
 
 ## Reporting Issues ###
 
 If you find any issues with this demo that you can't fix, feel free to report them in the [issues](https://github.com/forcedotcom/sfdx-travisci/issues) section of this repository.
+
+Test
